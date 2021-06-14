@@ -73,6 +73,17 @@ const MovieDetails = ( props) => {
         <NavigationIcon />
         Reviews
       </Fab>
+      {/* Added as part of exercise topic 2, production_countries in api request */}
+      <Paper component="ul" className={classes.root}>
+        <li>
+          <Chip label="Production Countries" className={classes.chip} color="primary" />
+        </li>
+        {movie.production_countries.map((g) => (
+          <li key={g.name}>
+            <Chip label={g.name} className={classes.chip} />
+          </li>
+        ))}
+      </Paper>
       </>
   );
 };
