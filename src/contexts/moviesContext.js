@@ -5,6 +5,7 @@ export const MoviesContext = React.createContext(null);
 const MoviesContextProvider = (props) => {
   const [myReviews, setMyReviews] = useState( {} )
   const [favorites, setFavorites] = useState( [] )
+  const [playlist, setPlaylist] = useState( [] )
 
   const addToFavorites = (movie) => {
     setFavorites([...favorites,movie.id])
@@ -21,6 +22,13 @@ const MoviesContextProvider = (props) => {
     setMyReviews( {...myReviews, [movie.id]: review } )
   };
 
+  const addToPlaylist = (movie) => {
+    setPlaylist([...playlist,movie.id]);
+    // Part 4, exercise 4, logging movie ids in current playlist
+    //console.log("in addToPlaylist")
+    //console.log(playlist) //playlist here is one addition behind
+  };
+
   return (
     <MoviesContext.Provider
       value={{
@@ -28,6 +36,8 @@ const MoviesContextProvider = (props) => {
         addToFavorites,
         removeFromFavorites,
         addReview,
+        playlist,
+        addToPlaylist,
       }}
     >
       {props.children}
